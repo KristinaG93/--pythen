@@ -1,0 +1,17 @@
+num1 = input("Привет, ваше первое число?\n")
+operation = input("Выберите операцию?\n")
+num2 = input("Теперь второе число?\n")
+
+qwer1 = float(num1)
+asdf2 = float(num2)
+
+if operation == "+":
+    output = qwer1 + asdf2
+if operation == "-":
+    output = qwer1 - asdf2
+if operation == "*":
+    output = qwer1 * asdf2
+if operation == "/":
+    output = qwer1 / asdf2
+
+print("Ваш ответ: "+str(output))
