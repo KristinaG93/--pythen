@@ -1,0 +1,38 @@
+import tkinter as tk
+import time
+
+def update_time():
+    current_time = time.strftime("%H:%M:%S")
+    current_date = time.strftime("%d-%m-%Y")
+    time_label.config(text=current_time, fg=get_next_color())
+    date_label.config(text=current_date, fg=get_next_color())
+    root.after(1000, update_time)  # обновляем каждую секунду
+
+def get_next_color():
+    # Циклическая смена цветов
+    global color_index
+    colors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#9400D3"]  # Радужные цвета
+    color_index = (color_index + 1) % len(colors)
+    return colors[color_index]
+
+root = tk.Tk()
+root.title("Неоновые часы")
+root.geometry("400x200")
+root.configure(bg="black")
+
+# Настройки для шрифта и стиля
+font_style = ("Helvetica", 48, "bold")
+date_font_style = ("Helvetica", 24, "bold")
+color_index = 0  # Индекс для отслеживания текущего цвета
+
+# Часы
+time_label = tk.Label(root, font=font_style, fg=get_next_color(), bg="black")
+time_label.pack(pady=10)
+
+# Дата
+date_label = tk.Label(root, font=date_font_style, fg=get_next_color(), bg="black")
+date_label.pack(pady=10)
+
+update_time()
+
+root.mainloop()
